@@ -1,6 +1,6 @@
 name: 'PBuild'
 description: 'Package or Project build'
-author: 'Your Name'
+author: 'Adrian Schröter <adrian@suse.de>'
 
 inputs:
   dist:
@@ -8,7 +8,7 @@ inputs:
     required: false
     default: 'tumbleweed'
   working-directory:
-    description: 'The directory where the dist folder is located'
+    description: 'The directory where the build recipe file is located'
     required: false
     default: '.'
 
@@ -22,8 +22,6 @@ runs:
         echo 'deb http://download.opensuse.org/repositories/openSUSE:/Tools/xUbuntu_Next/ /' | sudo tee /etc/apt/sources.list.d/openSUSE_Tools.list
         sudo apt-get update
         sudo apt-get install -y build
-        # to be moved to build package
-        sudo apt-get install -y libwww-perl libxml-parser-perl
 
     - name: Run pbuild
       shell: bash
