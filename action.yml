@@ -7,6 +7,10 @@ inputs:
     description: 'The distribution target for pbuild'
     required: false
     default: 'tumbleweed'
+  vm-type:
+    description: 'The used virtualization engine'
+    required: false
+    default: 'podman'
   working-directory:
     description: 'The directory where the build recipe file is located'
     required: false
@@ -28,4 +32,4 @@ runs:
       run: |
         cd ${{ inputs.working-directory }}
         [ -e "_manifest" -o -e "_pbuild" ] || ORPHAN=--orphan
-        pbuild --dist=${{ inputs.dist }} $ORPHAN --vm-type=docker
+        pbuild --dist=${{ inputs.dist }} $ORPHAN --vm-type=${{ inputs.vm-type }}
